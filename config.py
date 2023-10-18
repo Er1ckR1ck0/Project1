@@ -1,0 +1,6 @@
+start_image = "Img/kingdom.jpg"
+forest_image = "Img/forest.jpg"
+forest_image_thief = "Img/forest_thief.png"
+forest_run = "Img/forest_run.jpg"
+death = "Img/death.png"
+win = "Img/python.webp"
