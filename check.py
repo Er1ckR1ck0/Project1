@@ -39,4 +39,8 @@ def win_screen():
     if enter_choose == "2":
         return -1
     
-        
+def next_page():
+    item = input('Нажми Enter для перехода: ')
+    while item != "":
+        item = input('Да просто нажми ENTER')
+    return 

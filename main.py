@@ -1,14 +1,14 @@
 from image_generation import print_image
 from print_text import print_text
 from config import start_image, forest_image, forest_image_thief, forest_run, win
-from check import wrong_death, death_screen, win_screen
+from check import wrong_death, death_screen, win_screen, next_page
 import time
 
 #Start
 def chapter_kingdom():
     print_image(start_image)    
     start_text = """
-    > Ты как истинный паладин, ворвался в королевство, чтобы с помощью ведра украсть 
+    > Ты как истинный давакине, ворвался в королевство, чтобы с помощью ведра украсть 
     у охраны деньги. Спасибо, что ты драконорождённый, а не Тодд Говард
 
     (шёпотом) Купи Skyrim!
@@ -16,7 +16,7 @@ def chapter_kingdom():
     for i in start_text:
         print(i, end="")
         time.sleep(0.01)
-    time.sleep(1)
+    next_page()
     return 1
 
 def chapter_forest():
@@ -30,7 +30,7 @@ def chapter_forest():
     for i in strat_text_forest:
         print(i, end="")
         time.sleep(0.01)
-    time.sleep(1)
+    next_page()
     return 2
 
 def chapter_thief():
@@ -44,7 +44,7 @@ def chapter_thief():
     for i in strat_text_forest_thief:
         print(i, end="")
         time.sleep(0.01)
-    time.sleep(2)
+    next_page()
     print("\n"*20) #space generation
     print_image(forest_image_thief)
     speech_thief = """
@@ -152,15 +152,22 @@ def speech_with_thief():
 
 def wining():
     print("\n"*35)
-    speech_author = """
+    speech_author = f"""
     > Ты вспонимаешь два важных факта
     
     > 1. Ты до сих пор держишь ведро в руках
+    """
+    
+    for i in speech_author:
+        print(i, end="")
+        time.sleep(0.01)
+    next_page()
+    speech_author = """
     > 2. Ты обучаешься...
     """
     for i in speech_author:
         print(i, end="")
-        time.sleep(0.01)
+        time.sleep(0.2)
     print_image(win)
     speech_author = """
     > НА ЯНДЕКС ПРАКТИКУМЕ ПО НАПРАВЛЕНИЮ PYTHON РАЗРАБОТЧИК! 
@@ -183,13 +190,19 @@ def wining():
     for i in speech_author:
         print(i, end="")
         time.sleep(0.01)
-    time.sleep(2)
+    next_page()
     win_screen()
 def main():
     chapter = 0
     while True:
         match chapter:
-            case 0: chapter = chapter_kingdom()
+            case 0: 
+                print("\n"*100) #space generation
+                print("> Это была обычная история о давакине (сорри не знаю, как правильно, я ленивый)")
+                next_page()
+                print("> Но тут случилось, что-то странное")
+                print("\n"*4) #space generation
+                chapter = chapter_kingdom()
             case 1: chapter = chapter_forest()
             case 2: chapter = chapter_thief()
             case 2.1: chapter = chapter_thief_run()
